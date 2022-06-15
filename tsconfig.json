@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "dist/**/*.js"
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+  }
+}

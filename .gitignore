@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+
+# ビルド生成物は管理から外す
+dist/**/*.js
+dist/**/*.css
+dist/**/*.js.map
+dist/**/*.css.map
+
+
