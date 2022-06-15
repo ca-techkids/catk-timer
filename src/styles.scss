@@ -1,4 +1,87 @@
 html,
 body {
   font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.timer {
+  &-wrapper {
+    // size
+    width: 100vw;
+    height: 100vh;
+
+    // position
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 縦書き横書き共通のスタイル
+  &.vertical,
+  &.horizontal {
+    font-family: "Roboto Mono", monospace;
+  }
+
+  // 横書きのスタイル
+  &.horizontal {
+    font-size: 16vw;
+  }
+
+  // 縦書きのスタイル
+  &.vertical {
+    font-size: 16vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .timer-line {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .unit {
+      line-height: 12vh;
+      font-size: 8vh;
+      padding-left: 1vh;
+
+      // フォントの日英混合+大小混合のbaselineの違和感を解消する
+      position: relative;
+      bottom: 0.7vh;
+    }
+  }
+
+  // 画面サイズによる出し分け
+  &.vertical {
+    display: none;
+  }
+  @media (max-aspect-ratio: 1/1) {
+    &.vertical {
+      display: flex;
+    }
+
+    &.horizontal {
+      display: none;
+    }
+  }
+}
+
+.border {
+  position: absolute;
+  height: 3vh;
+  width: 100vw;
+  background-image: url("imgs/catk-border.png");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+
+  &.top {
+    top: 0;
+  }
+
+  &.bottom {
+    bottom: 0;
+  }
 }

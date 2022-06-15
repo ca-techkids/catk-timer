@@ -11,7 +11,7 @@ const build = gulp.parallel(buildTs, buildSass);
 async function buildTs() {
   const /** @type {esbuild.BuildOptions} */ options = {
       bundle: true,
-      target: ["chrome50", "firefox50", "safari10"],
+      target: ["chrome80", "firefox80", "safari12"],
       sourcemap: true,
     };
 
