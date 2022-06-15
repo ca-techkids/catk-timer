@@ -19,12 +19,12 @@ async function buildTs() {
     esbuild.build({
       ...options,
       entryPoints: ["src/index.ts"],
-      outfile: "dist/index.js",
+      outfile: "public/index.js",
     }),
     esbuild.build({
       ...options,
       entryPoints: ["src/admin.ts"],
-      outfile: "dist/admin.js",
+      outfile: "public/admin.js",
     }),
   ];
   return Promise.all(builders);
@@ -35,7 +35,7 @@ async function buildSass() {
     style: "compressed",
   });
 
-  const writers = [fs.writeFile("dist/styles.css", result.css)];
+  const writers = [fs.writeFile("public/styles.css", result.css)];
   return Promise.all(writers);
 }
 
@@ -45,7 +45,7 @@ async function watch() {
     };
 
   const devServer = DevServer.createServer({
-    root: "dist",
+    root: "public",
   });
   await new Promise((resolve) => {
     devServer.listen(8080, () => {
