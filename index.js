@@ -1528,11 +1528,30 @@
 
   // src/index.ts
   document.addEventListener("DOMContentLoaded", main);
+  var commentElement;
+  var horizontalTimerElement;
+  var horizontalHourElement;
+  var horizontalMinuteElement;
+  var horizontalSecondElement;
   function main() {
-    const horizontalTimerElement = document.getElementById("timer-horizontal");
-    const horizontalHourElement = document.getElementById("vtimer-h");
-    const horizontalMinuteElement = document.getElementById("vtimer-m");
-    const horizontalSecondElement = document.getElementById("vtimer-s");
+    commentElement = document.getElementById("comment");
+    horizontalTimerElement = document.getElementById("timer-horizontal");
+    horizontalHourElement = document.getElementById("vtimer-h");
+    horizontalMinuteElement = document.getElementById("vtimer-m");
+    horizontalSecondElement = document.getElementById("vtimer-s");
+    updateComment();
+    updateTimer();
+  }
+  function updateComment() {
+    commentElement.innerText = localStorage.getItem("comment") || "";
+    window.addEventListener("storage", onStorage);
+  }
+  function onStorage(event) {
+    if (event.key !== "comment")
+      return;
+    commentElement.innerText = event.newValue || "";
+  }
+  function updateTimer() {
     setInterval(() => {
       const now = new Date();
       horizontalTimerElement.innerText = format(now, "HH:mm:ss");
