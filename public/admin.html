@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="admin.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <textarea id="comment-input"></textarea>
+  <body id="admin">
+    <h1>CATK-TIMER</h1>
+    <div class="comment-form">
+      <textarea
+        id="comment-input"
+        placeholder="タイマー下に表示するコメントを記入"
+      ></textarea>
+      <div class="comment-form-buttons">
+        <button id="comment-delete" class="red">削除</button>
+      </div>
+    </div>
   </body>
 </html>

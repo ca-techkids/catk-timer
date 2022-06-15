@@ -1,9 +1,16 @@
 document.addEventListener("DOMContentLoaded", main);
 
+let inputElement: HTMLTextAreaElement;
+let deleteButton: HTMLElement;
+
 function main() {
-  const inputElement = document.getElementById("comment-input")!;
+  inputElement = document.getElementById(
+    "comment-input"
+  )! as HTMLTextAreaElement;
+  deleteButton = document.getElementById("comment-delete")!;
 
   inputElement.addEventListener("input", onInput);
+  deleteButton.addEventListener("click", onDelete);
 }
 
 function onInput(event: Event) {
@@ -11,4 +18,9 @@ function onInput(event: Event) {
   const target = event.target as HTMLInputElement;
 
   localStorage.setItem("comment", target.value);
+}
+
+function onDelete() {
+  localStorage.setItem("comment", "");
+  inputElement.value = "";
 }
