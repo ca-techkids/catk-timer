@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,7 @@
     "@tsconfig/strictest": "1.0.1",
     "@types/http-server": "0.12.1",
     "esbuild": "0.14.43",
+    "glob": "^8.0.3",
     "gulp": "4.0.2",
     "http-server": "14.1.1",
     "sass": "1.52.3",

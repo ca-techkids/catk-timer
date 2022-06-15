@@ -4,9 +4,19 @@ const esbuild = require("esbuild");
 const gulp = require("gulp");
 const sass = require("sass");
 const fs = require("fs/promises");
+const callbackGlob = require("glob");
+const { promisify } = require("util");
 const DevServer = require("http-server");
 
-const build = gulp.parallel(buildTs, buildSass);
+const glob = promisify(callbackGlob);
+
+const build = gulp.series(clean, gulp.parallel(buildTs, buildSass));
+
+async function clean() {
+  const targetFiles = await glob("public/**/*.*(js|css|map)");
+  const removers = targetFiles.map((targetFile) => fs.rm(targetFile));
+  return Promise.all(removers);
+}
 
 async function buildTs() {
   const /** @type {esbuild.BuildOptions} */ options = {
@@ -62,5 +72,7 @@ module.exports = {
   buildTs,
   buildSass,
   watch,
+  build,
+  clean,
   default: build,
 };
