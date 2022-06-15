@@ -10,14 +10,29 @@
   </head>
   <body id="admin">
     <h1>CATK-TIMER</h1>
-    <div class="comment-form">
+    <div class="form">
+      <h2>表示変更</h2>
       <textarea
         id="comment-input"
         placeholder="タイマー下に表示するコメントを記入"
       ></textarea>
-      <div class="comment-form-buttons">
+      <div class="form-tools">
         <button id="comment-delete" class="red">削除</button>
       </div>
+    </div>
+    <div class="scheduled-comment">
+      <h2>予約投稿</h2>
+      <div class="form">
+        <textarea
+          id="scheduled-comment-input"
+          placeholder="予約するコメントを記入"
+        ></textarea>
+        <div class="form-tools">
+          <input type="time" id="scheduled-comment-time" />
+          <button class="green" id="scheduled-comment-submit">予約</button>
+        </div>
+      </div>
+      <div id="scheduled-comment-list" class="scheduled-comment-list"></div>
     </div>
   </body>
 </html>
