@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", main);
 let scheduledComments: ScheduledComment[] = [];
 
 let inputElement: HTMLTextAreaElement;
-let deleteButton: HTMLElement;
+let deleteButton: HTMLButtonElement;
+let submitButton: HTMLButtonElement;
 let scheduledCommentInputElement: HTMLTextAreaElement;
 let scheduledTimeInputElement: HTMLInputElement;
 let scheduledSubmitButton: HTMLInputElement;
@@ -21,8 +22,9 @@ function main() {
 
   watchScheduledComment();
 
-  inputElement.addEventListener("input", onInput);
+  submitButton.addEventListener("click", onSubmit);
   deleteButton.addEventListener("click", onDelete);
+
   scheduledSubmitButton.addEventListener("click", onScheduledCommentSubmit);
 }
 
@@ -31,7 +33,8 @@ function initElements() {
     "comment-input"
   )! as HTMLTextAreaElement;
 
-  deleteButton = document.getElementById("comment-delete")!;
+  deleteButton = document.getElementById("comment-delete") as HTMLButtonElement;
+  submitButton = document.getElementById("comment-submit") as HTMLButtonElement;
 
   scheduledCommentInputElement = document.getElementById(
     "scheduled-comment-input"
@@ -50,11 +53,11 @@ function initElements() {
   ) as HTMLDivElement;
 }
 
-function onInput(event: Event) {
-  console.log("changed!");
-  const target = event.target as HTMLInputElement;
+function onSubmit() {
+  const comment = inputElement.value || "";
+  localStorage.setItem("comment", comment);
 
-  localStorage.setItem("comment", target.value);
+  inputElement.value = "";
 }
 
 function onDelete() {
