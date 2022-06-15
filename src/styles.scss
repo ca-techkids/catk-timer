@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: sans-serif;
@@ -7,19 +11,21 @@ body {
   font-family: "Noto Sans JP", sans-serif;
 }
 
+.app {
+  // size
+  width: 100vw;
+  height: 100vh;
+  padding: 5vw 5vh;
+
+  // position
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .timer {
-  &-wrapper {
-    // size
-    width: 100vw;
-    height: 100vh;
-
-    // position
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   // 縦書き横書き共通のスタイル
   &.vertical,
   &.horizontal {
@@ -34,6 +40,7 @@ body {
   // 縦書きのスタイル
   &.vertical {
     font-size: 16vh;
+    line-height: 13vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -44,7 +51,6 @@ body {
     }
 
     .unit {
-      line-height: 12vh;
       font-size: 8vh;
       padding-left: 1vh;
 
@@ -69,6 +75,17 @@ body {
   }
 }
 
+.comment {
+  padding-top: 4vh;
+
+  font-size: 6vw;
+  line-height: 1;
+
+  @media (max-aspect-ratio: 1/1) {
+    font-size: 5vh;
+  }
+}
+
 .border {
   position: absolute;
   height: 3vh;
@@ -84,4 +101,8 @@ body {
   &.bottom {
     bottom: 0;
   }
+}
+
+// adminページのスタイル
+.admin {
 }

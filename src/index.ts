@@ -2,13 +2,37 @@ import { format } from "date-fns";
 
 document.addEventListener("DOMContentLoaded", main);
 
+let commentElement: HTMLElement;
+let horizontalTimerElement: HTMLElement;
+let horizontalHourElement: HTMLElement;
+let horizontalMinuteElement: HTMLElement;
+let horizontalSecondElement: HTMLElement;
+
 function main() {
-  const horizontalTimerElement = document.getElementById("timer-horizontal")!;
+  commentElement = document.getElementById("comment")!;
 
-  const horizontalHourElement = document.getElementById("vtimer-h")!;
-  const horizontalMinuteElement = document.getElementById("vtimer-m")!;
-  const horizontalSecondElement = document.getElementById("vtimer-s")!;
+  horizontalTimerElement = document.getElementById("timer-horizontal")!;
 
+  horizontalHourElement = document.getElementById("vtimer-h")!;
+  horizontalMinuteElement = document.getElementById("vtimer-m")!;
+  horizontalSecondElement = document.getElementById("vtimer-s")!;
+
+  updateComment();
+  updateTimer();
+}
+
+function updateComment() {
+  commentElement.innerText = localStorage.getItem("comment") || "";
+  window.addEventListener("storage", onStorage);
+}
+
+function onStorage(event: StorageEvent) {
+  if (event.key !== "comment") return;
+
+  commentElement.innerText = event.newValue || "";
+}
+
+function updateTimer() {
   setInterval(() => {
     const now = new Date();
     horizontalTimerElement.innerText = format(now, "HH:mm:ss");
