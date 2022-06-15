@@ -1,6 +1,7 @@
-$red: #f44336;
-$green: #4caf50;
-$vh-threshold: 4/5;
+:root {
+  --red: #f44336;
+  --green: #4caf50;
+}
 
 * {
   box-sizing: border-box;
@@ -30,12 +31,12 @@ button {
   }
 
   &.red {
-    background-color: $red;
+    background-color: var(--red);
     color: white;
   }
 
   &.green {
-    background-color: $green;
+    background-color: var(--green);
     color: white;
   }
 }
@@ -93,7 +94,7 @@ button {
   &.vertical {
     display: none;
   }
-  @media (max-aspect-ratio: $vh-threshold) {
+  @media (max-aspect-ratio: 4/5) {
     &.vertical {
       display: flex;
     }
@@ -107,12 +108,12 @@ button {
 .comment {
   padding-top: 4vh;
 
-  font-size: 6vw;
+  font-size: min(6vw, 8vh);
+  line-height: 1.25;
   text-align: center;
 
-  @media (max-aspect-ratio: $vh-threshold) {
+  @media (max-aspect-ratio: 4/5) {
     font-size: 5vh;
-    line-height: 1.25;
   }
 }
 
